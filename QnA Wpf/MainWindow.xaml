@@ -28,16 +28,27 @@
                 <Button FontStyle="Italic" Click="Button_Click" Margin="5">Show Answer</Button>
             </StackPanel>
 
-            <StackPanel x:Name="PanelQuestions" Margin="5" Background="#FFE0D8D8">
-                <Label FontSize="20" HorizontalAlignment="Center" Margin="5">Answers</Label>
-                <!--<TextBox  TextWrapping="Wrap" Margin="5">write answer here</TextBox>-->
-                <RichTextBox x:Name="rtbAnswerBox" Margin="5">
-                    <FlowDocument>
-                        <Paragraph x:Name="pAnswer"  FontSize="12">Write answer here</Paragraph>
-                    </FlowDocument>
-                </RichTextBox>
-                <TextBlock x:Name="tblShowAnswer" Visibility="Hidden" TextWrapping="Wrap" Background="DarkSeaGreen" Margin="5"></TextBlock>
-            </StackPanel>
+            <ScrollViewer>
+
+                <StackPanel x:Name="PanelQuestions" Margin="5" Background="#FFE0D8D8" RenderTransformOrigin="0.5,0.5">
+                    <StackPanel.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </StackPanel.RenderTransform>
+                    <Label FontSize="20" HorizontalAlignment="Center" Margin="5">Answers</Label>
+                    <!--<TextBox  TextWrapping="Wrap" Margin="5">write answer here</TextBox>-->
+                    <RichTextBox x:Name="rtbAnswerBox" VerticalScrollBarVisibility="Auto" Margin="5">
+                        <FlowDocument>
+                            <Paragraph x:Name="pAnswer"  FontSize="12">Write answer here</Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                    <RichTextBox x:Name="rtbShowAnswer" Visibility="Hidden" Background="DarkSeaGreen" Margin="5"></RichTextBox>
+                </StackPanel>
+            </ScrollViewer>
         </DockPanel>
     </Grid>
 </Window>

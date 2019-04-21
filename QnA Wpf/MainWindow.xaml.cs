@@ -47,11 +47,10 @@ namespace QnA_Wpf
         private void ButtonNewQuestion_Click(object sender, RoutedEventArgs e)
         {
             var answer = _textUtility.ConvertRichTextBoxToString(rtbAnswerBox);
-            //_jsonController.NewQuestion(tbQuestionTitle.Text, tblQuestionDetails?.Text, tblAnswerBox?.Text);
+            _jsonController.NewQuestion(tbQuestionTitle.Text, tblQuestionDetails?.Text, answer);
 
             rtbAnswerBox.Document.Blocks.Clear();
-            //tblAnswerBox.Text = "";
-            //LoadAllQuestions();
+            LoadAllQuestions();
             //rtbAnswerBox.AppendText(answer);
         }
 
@@ -65,22 +64,23 @@ namespace QnA_Wpf
             tbQuestionTitle.Text = result.Title;
             tblQuestionDetails.Text = result.Question;
 
-            tblShowAnswer.Text = result.Answer;
-            tblShowAnswer.Visibility = Visibility.Hidden;
-            //tblAnswerBox.Text = "";
-
+            rtbShowAnswer.Document.Blocks.Clear();
+            rtbShowAnswer.AppendText(result.Answer);
+            rtbShowAnswer.Visibility = Visibility.Hidden;
+            rtbAnswerBox.Document.Blocks.Clear();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            tblShowAnswer.Visibility = Visibility.Visible;
+            rtbShowAnswer.Visibility = Visibility.Visible;
         }
 
         private void ButtonEditQuestion_Click(object sender, RoutedEventArgs e)
         {
-            //var editQuestion = new QuestionObject
-            //{ Title = tbQuestionTitle.Text, Question = tblQuestionDetails.Text, Answer = tblAnswerBox.Text };
-            //_jsonController.EditQuestion(editQuestion);
+            var answer = _textUtility.ConvertRichTextBoxToString(rtbAnswerBox);
+            var editQuestion = new QuestionObject
+            { Title = tbQuestionTitle.Text, Question = tblQuestionDetails.Text, Answer = answer};
+            _jsonController.EditQuestion(editQuestion);
         }
     }
 }
