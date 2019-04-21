@@ -1,0 +1,43 @@
+﻿<Window x:Class="QnA_Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QnA_Wpf"
+        mc:Ignorable="d"
+        Title="Jennis Many Questions" Height="800" Width="1024">
+    <Grid>
+        <DockPanel>
+            <StackPanel MinWidth="180" Margin="5" Background="#FFE0D8D8">
+                <Label FontSize="20" HorizontalAlignment="Center" Margin="5">Questions List</Label>
+                <ListView x:Name="listQuestions" Margin="5" Width="auto" SelectionChanged="ListQuestions_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button x:Name="buttonNewQuestion" Content="New question" Click="ButtonNewQuestion_Click" Margin="5"/>
+                <Button x:Name="buttonEditQuestion" Content="Edit question" Margin="5" Click="ButtonEditQuestion_Click"/>
+            </StackPanel>
+
+            <StackPanel x:Name="panelQuestions" Width="269" Margin="5" Background="#FFE0D8D8">
+                <Label FontSize="20" HorizontalAlignment="Center" Margin="5">Question</Label>
+                <TextBox x:Name="tbQuestionTitle" TextWrapping="Wrap" Text="Question Title" FontStyle="Italic" TextAlignment="Center" Margin="5"/>
+                <TextBox x:Name="tblQuestionDetails" TextWrapping="Wrap" Background="#FFFDFDFD" Margin="5">Write longer question here</TextBox>
+                <Button FontStyle="Italic" Click="Button_Click" Margin="5">Show Answer</Button>
+            </StackPanel>
+
+            <StackPanel x:Name="PanelQuestions" Margin="5" Background="#FFE0D8D8">
+                <Label FontSize="20" HorizontalAlignment="Center" Margin="5">Answers</Label>
+                <!--<TextBox  TextWrapping="Wrap" Margin="5">write answer here</TextBox>-->
+                <RichTextBox x:Name="rtbAnswerBox" Margin="5">
+                    <FlowDocument>
+                        <Paragraph x:Name="pAnswer"  FontSize="12">Write answer here</Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <TextBlock x:Name="tblShowAnswer" Visibility="Hidden" TextWrapping="Wrap" Background="DarkSeaGreen" Margin="5"></TextBlock>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>
